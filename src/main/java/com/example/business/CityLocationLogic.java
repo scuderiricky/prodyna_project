@@ -71,7 +71,8 @@ public class CityLocationLogic implements CityBusinessInterface {
     private String buildCityImageUrl(City city) throws IllegalArgumentException {
 
         if(!validateCity(city)){
-            throw new IllegalArgumentException("City object is invalid");
+            System.out.println("City object is invalid");
+            return null;
         }
 
         List<Double> coordinates = getCoordinatesOfCity(city);

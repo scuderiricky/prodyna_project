@@ -20,17 +20,17 @@ class LocationApiApplicationTests {
 	}
 
 	@Test
-	 void TestWrongCityName()  {
-		Assertions.assertThrows(IllegalArgumentException.class, () -> cityLocationLogic.getCityLocation("null"));
-		Assertions.assertThrows(IllegalArgumentException.class, () -> cityLocationLogic.getCityLocation(null));
+	 void TestWrongCityName() throws IOException {
+		Assertions.assertNull(cityLocationLogic.getCityLocation("null").getCityImageUrl());
+		Assertions.assertNull(cityLocationLogic.getCityLocation(null).getCityImageUrl());
 	}
 
 	@Test
-	void TestRightCityName()  {
-		Assertions.assertDoesNotThrow(() -> {cityLocationLogic.getCityLocation("Basel");});
-		Assertions.assertDoesNotThrow(() -> {cityLocationLogic.getCityLocation("zürich");});
-		Assertions.assertDoesNotThrow(() -> {cityLocationLogic.getCityLocation("Zürich");});
-		Assertions.assertDoesNotThrow(() -> {cityLocationLogic.getCityLocation("Zurich");});
+	void TestRightCityName() throws IOException {
+		Assertions.assertNotNull(cityLocationLogic.getCityLocation("Basel"));
+		Assertions.assertNotNull(cityLocationLogic.getCityLocation("zürich"));
+		Assertions.assertNotNull(cityLocationLogic.getCityLocation("Zürich"));
+		Assertions.assertNotNull(cityLocationLogic.getCityLocation("Zurich"));
 	}
 
 }
